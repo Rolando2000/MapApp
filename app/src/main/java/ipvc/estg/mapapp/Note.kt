@@ -14,10 +14,10 @@ import ipvc.estg.mapapp.adapters.NoteAdapter
 import ipvc.estg.mapapp.entities.Note
 import ipvc.estg.mapapp.viewModel.NoteViewModel
 
-class Note : AppCompatActivity() {
+class Note : AppCompatActivity(), NoteAdapter.OnNoteClickListener {
 
     private lateinit var notaViewModel: NoteViewModel
-    private val newWordActivityRequestCode = 1
+    private val newNotaActivityRequestCode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class Note : AppCompatActivity() {
 
         // recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = NoteAdapter(this)
+        val adapter = NoteAdapter(this,this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -40,7 +40,7 @@ class Note : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             val intent = Intent(this@Note, MainActivity::class.java)
-            startActivityForResult(intent, newWordActivityRequestCode)
+            startActivityForResult(intent, newNotaActivityRequestCode)
         }
 
     }
@@ -48,7 +48,7 @@ class Note : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
+        if (requestCode == newNotaActivityRequestCode && resultCode == Activity.RESULT_OK) {
             val titulo = data?.getStringExtra(MainActivity.EXTRA_REPLY_titulo)
             val descricao = data?.getStringExtra(MainActivity.EXTRA_REPLY_descricao)
 
@@ -59,9 +59,19 @@ class Note : AppCompatActivity() {
 
         } else {
             Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG).show()
+                    applicationContext,
+                    R.string.empty_not_saved,
+                    Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onItemClick(nota: Note, position: Int) {
+        //Toast.makeText(this, nota.titulo, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, Editar::class.java)
+        intent.putExtra("id", nota.id)
+        intent.putExtra("titulo", nota.titulo)
+        intent.putExtra("descricao", nota.desc)
+
+        startActivity(intent)
     }
 }

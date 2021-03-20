@@ -10,14 +10,25 @@ import ipvc.estg.mapapp.R
 import ipvc.estg.mapapp.entities.Note
 
 class NoteAdapter  internal constructor(
-    context: Context
+    context: Context, var clickListener: OnNoteClickListener
 ) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var notas = emptyList<Note>() // Cached copy of cities
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val noteItemView: TextView = itemView.findViewById(R.id.textView)
+        val notaItemView: TextView = itemView.findViewById(R.id.textView)
+        val descricaoItemView: TextView = itemView.findViewById(R.id.desc)
+
+        fun initialize(nota: Note, action:OnNoteClickListener){
+            notaItemView.text=nota.titulo
+            descricaoItemView.text=nota.desc
+
+            itemView.setOnClickListener{
+                action.onItemClick(nota, adapterPosition)
+            }
+        }
+
     }
 
 
@@ -28,7 +39,11 @@ class NoteAdapter  internal constructor(
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val current = notas[position]
-        holder.noteItemView.text = current.id.toString() + " - \t" + current.titulo + "\n\n" + current.desc
+        holder.notaItemView.text =  current.titulo
+        holder.descricaoItemView.text= current.desc
+
+        holder.initialize(notas.get(position),clickListener)
+
     }
 
     internal fun setNotas(notas: List<Note>) {
@@ -37,4 +52,8 @@ class NoteAdapter  internal constructor(
     }
 
     override fun getItemCount() =notas.size
+
+    interface OnNoteClickListener{
+        fun onItemClick(nota:Note, position: Int)
+    }
 }

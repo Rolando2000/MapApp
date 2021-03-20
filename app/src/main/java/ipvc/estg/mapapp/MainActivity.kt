@@ -17,10 +17,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tituloText = findViewById(R.id.city)
-        descricaoText = findViewById(R.id.country)
+        tituloText = findViewById(R.id.titulo)
+        descricaoText = findViewById(R.id.descricao)
 
-        val button = findViewById<Button>(R.id.button_save)
+        val button = findViewById<Button>(R.id.guardar)
         button.setOnClickListener {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(tituloText.text)) {
