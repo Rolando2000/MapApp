@@ -9,12 +9,15 @@
         style="@style/word_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_700" />
+        android:background="#4FD5D4"
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:background="#B4E8E8"
+        android:text="TextView"
+        android:textSize="18dp" />
 
 </LinearLayout>

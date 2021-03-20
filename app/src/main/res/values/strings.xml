@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MapApp</string>
-    <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="empty_not_saved">Nota não foi salva, pois não tinha título</string>
+    <string name="apagar_n">Apagar</string>
+    <string name="guardar_n">Guardar</string>
+    <string name="titulo_n">Notas:</string>
 </resources>

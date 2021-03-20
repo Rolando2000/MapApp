@@ -52,6 +52,7 @@ class Note : AppCompatActivity(), NoteAdapter.OnNoteClickListener {
             val titulo = data?.getStringExtra(MainActivity.EXTRA_REPLY_titulo)
             val descricao = data?.getStringExtra(MainActivity.EXTRA_REPLY_descricao)
 
+
             if (titulo!= null && descricao != null) {
                 val nota = Note(titulo = titulo, desc = descricao)
                 notaViewModel.insert(nota)
@@ -74,4 +75,7 @@ class Note : AppCompatActivity(), NoteAdapter.OnNoteClickListener {
 
         startActivity(intent)
     }
+
+
+
 }

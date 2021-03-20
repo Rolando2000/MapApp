@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/back_n">
 
     <EditText
         android:id="@+id/titulo"
@@ -12,7 +13,7 @@
         android:fontFamily="sans-serif-light"
         android:hint="Inserir Titulo"
         android:inputType="textAutoComplete"
-        android:textSize="18sp" />
+        android:textSize="18sp"/>
 
     <EditText
         android:id="@+id/descricao"
@@ -31,13 +32,17 @@
         android:layout_marginLeft="90dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/n_btn"
-        android:text="Guardar"
-        app:backgroundTint="@color/teal_200" />
+        android:text="@string/guardar_n"
+        app:backgroundTint="@color/teal_700" />
 
     <Button
         android:id="@+id/apagar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_width="248dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/n_btn"
+        android:text="@string/apagar_n"
+        app:backgroundTint="@color/teal_700" />
 
 </LinearLayout>

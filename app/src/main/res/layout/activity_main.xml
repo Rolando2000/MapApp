@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/back_n">
 
     <EditText
         android:id="@+id/titulo"
@@ -31,7 +32,7 @@
         android:layout_marginLeft="90dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/n_btn"
-        android:text="Guardar"
-        app:backgroundTint="@color/teal_200" />
+        android:text="@string/guardar_n"
+        app:backgroundTint="@color/teal_700" />
 
 </LinearLayout>
