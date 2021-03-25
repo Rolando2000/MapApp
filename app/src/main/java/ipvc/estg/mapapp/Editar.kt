@@ -1,8 +1,10 @@
 package ipvc.estg.mapapp
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import ipvc.estg.mapapp.viewModel.NoteViewModel
@@ -42,8 +44,25 @@ class Editar : AppCompatActivity() {
 
         val Apagar = findViewById<Button>(R.id.apagar)
         Apagar.setOnClickListener {
-            notaViewModel.delete(id)
+            val AlertaApagar = AlertDialog.Builder(this)
+            AlertaApagar.setTitle(getString(R.string.apagar_nota))
+            AlertaApagar.setMessage(getString(R.string.mensagem_apagar))
+            AlertaApagar.setPositiveButton(getString(R.string.sim)){ dialog: DialogInterface?, which: Int ->
+                notaViewModel.delete(id)
+                finish()
+            }
+
+            AlertaApagar.setNegativeButton(getString(R.string.nao)){ dialog, id ->
+                dialog.dismiss()
+            }
+            AlertaApagar.show()
+
+        }
+
+        val back = findViewById<Button>(R.id.back)
+        back.setOnClickListener{
             finish()
         }
+
     }
 }
