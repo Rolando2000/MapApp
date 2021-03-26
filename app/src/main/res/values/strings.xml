@@ -10,4 +10,6 @@
     <string name="mensagem_apagar">Tem a certeza que quer eliminar a nota??</string>
     <string name="sim">SIM</string>
     <string name="nao">NÃO</string>
+    <string name="ab_criarNota_n">Criar uma nova Nota</string>
+    <string name="ab_editarNota_n">Editar a Nota</string>
 </resources>
