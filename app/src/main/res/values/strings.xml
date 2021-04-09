@@ -12,4 +12,7 @@
     <string name="nao">NÃO</string>
     <string name="ab_criarNota_n">Criar uma nova Nota</string>
     <string name="ab_editarNota_n">Editar a Nota</string>
+    <string name="btn_lo">entrar</string>
+    <string name="username">nome de usuário:</string>
+    <string name="pass">palavra-passe:</string>
 </resources>

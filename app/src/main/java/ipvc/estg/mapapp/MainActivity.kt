@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         tituloText = findViewById(R.id.titulo)
         descricaoText = findViewById(R.id.descricao)
 

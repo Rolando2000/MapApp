@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -37,9 +38,17 @@ class Editar : AppCompatActivity() {
             val titulofinal = tituloText.text.toString()
             val descricaofinal = descricaoText.text.toString()
 
-            notaViewModel.update(id, titulofinal, descricaofinal)
+            if (isNullOrEmpty(titulofinal)) {
+                Toast.makeText(
+                        applicationContext,
+                        R.string.empty_not_saved,
+                        Toast.LENGTH_LONG).show()
 
-            finish()
+            } else {
+                notaViewModel.update(id, titulofinal, descricaofinal)
+                finish()
+
+            }
         }
 
         val Apagar = findViewById<Button>(R.id.apagar)
@@ -64,5 +73,11 @@ class Editar : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    fun isNullOrEmpty(str: String?): Boolean {
+        if (str != null && !str.trim().isEmpty())
+            return false
+        return true
     }
 }
