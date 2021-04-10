@@ -15,4 +15,6 @@
     <string name="btn_lo">entrar</string>
     <string name="username">nome de usuário:</string>
     <string name="pass">palavra-passe:</string>
+    <string name="WrongUser">Nome de utilizador não existe</string>
+    <string name="wrongPass">Palavra-passe errada</string>
 </resources>

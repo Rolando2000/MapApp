@@ -5,10 +5,10 @@ import retrofit2.http.*
 
 interface EndPoints {
 
-    @GET("/user/")
+    @GET("/myslim/api/user")
     fun getUsers(): Call<List<User>>
 
-    @GET("/user/{id}")
+    @GET("/myslim/api/user/{id}")
     fun getUserById(@Path("id") id:Int): Call<User>
 
 
