@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ipvc.estg.mapapp.api.EndPoints
 import ipvc.estg.mapapp.api.ServiceBuilder
 import ipvc.estg.mapapp.api.User
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

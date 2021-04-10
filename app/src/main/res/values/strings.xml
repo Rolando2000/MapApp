@@ -17,4 +17,6 @@
     <string name="pass">palavra-passe:</string>
     <string name="WrongUser">Nome de utilizador não existe</string>
     <string name="wrongPass">Palavra-passe errada</string>
+    <string name="login_pass">Insira palavra-passe</string>
+    <string name="login_user">Insira nome utilizador</string>
 </resources>
