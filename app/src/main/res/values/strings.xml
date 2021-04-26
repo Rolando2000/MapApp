@@ -19,4 +19,6 @@
     <string name="wrongPass">Palavra-passe errada</string>
     <string name="login_pass">Insira palavra-passe</string>
     <string name="login_user">Insira nome utilizador</string>
+    <string name="username_null">nome do utilizador está vazio</string>
+    <string name="pass_null">A palavra passe está vazia</string>
 </resources>
