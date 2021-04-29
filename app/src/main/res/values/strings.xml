@@ -21,4 +21,12 @@
     <string name="login_user">Insira nome utilizador</string>
     <string name="username_null">nome do utilizador está vazio</string>
     <string name="pass_null">A palavra passe está vazia</string>
+
+    <string-array name="tipoProb">
+        <item>obras</item>
+        <item>acidente</item>
+        <item>buracos</item>
+        <item>estrada fechada</item>
+        <item>engarrafamento</item>
+    </string-array>
 </resources>

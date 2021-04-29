@@ -3,6 +3,7 @@
     package="ipvc.estg.mapapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -11,17 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MapApp">
-        <activity android:name=".retrofitLogin">
+        <activity android:name=".AdicionarProblema">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Note">
+        <activity android:name=".retrofitLogin">
+
         </activity>
+        <activity android:name=".Note"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Editar" />
-        <activity android:name=".Marker" />
+        <activity android:name=".Marker">
+
+        </activity>
+
+
     </application>
 
 </manifest>
