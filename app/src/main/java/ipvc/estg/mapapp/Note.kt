@@ -24,7 +24,7 @@ class Note : AppCompatActivity(), NoteAdapter.OnNoteClickListener {
         setContentView(R.layout.activity_notas)
 
         // recycler view
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclermarker)
         val adapter = NoteAdapter(this,this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)

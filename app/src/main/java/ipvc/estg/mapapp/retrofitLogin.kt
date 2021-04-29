@@ -1,15 +1,14 @@
 package ipvc.estg.mapapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import ipvc.estg.mapapp.api.EndPoints
-import ipvc.estg.mapapp.api.OutputPost
-import ipvc.estg.mapapp.api.ServiceBuilder
-import ipvc.estg.mapapp.api.User
+import ipvc.estg.mapapp.api.*
+import ipvc.estg.mapapp.entities.Note
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -57,6 +56,7 @@ class retrofitLogin : AppCompatActivity() {
 
                             val c: OutputPost = response.body()!!
                             Toast.makeText(this@retrofitLogin,c.MSG,Toast.LENGTH_SHORT).show()
+                            markerInicio(c.id)
                         }
                     }
 
@@ -67,5 +67,11 @@ class retrofitLogin : AppCompatActivity() {
                 })
             }
         }
+    }
+
+    fun markerInicio(marker: String) {
+        val intent = Intent(this, Marker::class.java)
+        intent.putExtra("idUser", marker)
+        startActivity(intent)
     }
 }
