@@ -40,4 +40,5 @@
         <item>estrada fechada</item>
         <item>engarrafamento</item>
     </string-array>
+    <string name="title_activity_mapa">Map</string>
 </resources>
