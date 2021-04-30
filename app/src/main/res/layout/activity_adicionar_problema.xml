@@ -31,17 +31,20 @@
                 android:layout_marginBottom="0dp"
                 android:background="#03A9F4"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/ab_criarNota_n"
+                android:text="@string/AddProb_actionBar"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30dp" />
 
             <EditText
                 android:id="@+id/titulo"
-                android:layout_width="match_parent"
-                android:layout_height="62dp"
+                android:layout_width="397dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="0dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-light"
                 android:hint="@string/tit_n"
                 android:inputType="textAutoComplete"
@@ -51,14 +54,14 @@
 
             <EditText
                 android:id="@+id/descricao"
-                android:layout_width="393dp"
+                android:layout_width="378dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="0dp"
+                android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="@string/desc_n"
@@ -68,12 +71,15 @@
 
             <EditText
                 android:id="@+id/longitude"
-                android:layout_width="match_parent"
-                android:layout_height="62dp"
+                android:layout_width="378dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="0dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-light"
-                android:hint="@string/tit_n"
+                android:hint="@string/InsertLong"
                 android:inputType="textAutoComplete"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
@@ -81,41 +87,73 @@
 
             <EditText
                 android:id="@+id/latitude"
-                android:layout_width="match_parent"
-                android:layout_height="62dp"
+                android:layout_width="376dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="0dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-light"
-                android:hint="@string/tit_n"
+                android:hint="@string/insertLat"
                 android:inputType="textAutoComplete"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="18sp" />
 
+            <Button
+                android:id="@+id/coordenadas"
+                android:layout_width="229dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/coords" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/TipoProb"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
             <Spinner
                 android:id="@+id/spinner2"
-                android:layout_width="400dp"
-                android:layout_height="65dp"
+                android:layout_width="320dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="10dp"
                 android:background="#03A9F4"
                 android:entries="@array/tipoProb" />
 
             <Button
                 android:id="@+id/imagem"
-                android:layout_width="match_parent"
+                android:layout_width="225dp"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/fotoProb" />
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <Button
                 android:id="@+id/guardar1"
-                android:layout_width="wrap_content"
+                android:layout_width="225dp"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:text="@string/guardar_n" />
 
         </LinearLayout>
     </ScrollView>

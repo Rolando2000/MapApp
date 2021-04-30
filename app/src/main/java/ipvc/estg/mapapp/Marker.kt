@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ipvc.estg.mapapp.adapters.markerAdapter
 import ipvc.estg.mapapp.api.EndPoints
 import ipvc.estg.mapapp.api.OutputPost
@@ -29,6 +30,7 @@ class Marker : AppCompatActivity() {
 
         val idUser = getIntent().getStringExtra("idUser")
         val id_user: Int = idUser!!.toInt()
+
         val call = request.getMarkerByIdUser(id_user)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclermarker)
 
@@ -48,6 +50,19 @@ class Marker : AppCompatActivity() {
             }
         })
 
+        val add = findViewById<FloatingActionButton>(R.id.fab)
+
+        add.setOnClickListener() {
+            markerInicio(idUser)
+        }
+
+
+    }
+
+    fun markerInicio(marker: String) {
+        val intent = Intent(this, AdicionarProblema::class.java)
+        intent.putExtra("idUser", marker)
+        startActivity(intent)
     }
 
 

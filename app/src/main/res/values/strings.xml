@@ -21,6 +21,13 @@
     <string name="login_user">Insira nome utilizador</string>
     <string name="username_null">nome do utilizador está vazio</string>
     <string name="pass_null">A palavra passe está vazia</string>
+    <string name="AddProb_actionBar">Adicionar um problema</string>
+    <string name="listProb_actionBar">Problemas</string>
+    <string name="InsertLong">Inserir longitude</string>
+    <string name="insertLat">Inserir Latitude</string>
+    <string name="coords">Obter as suas coordenadas atuais</string>
+    <string name="fotoProb">Adicionar fotografia</string>
+    <string name="TipoProb">Selecione um tipo de problema:</string>
 
     <string-array name="tipoProb">
         <item>obras</item>
