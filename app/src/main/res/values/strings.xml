@@ -29,6 +29,10 @@
     <string name="fotoProb">Adicionar fotografia</string>
     <string name="TipoProb">Selecione um tipo de problema:</string>
 
+    <string name="sound">sound</string>
+    <string name="user"></string>
+    <string name="preference_file_key">file</string>
+
     <string-array name="tipoProb">
         <item>obras</item>
         <item>acidente</item>
