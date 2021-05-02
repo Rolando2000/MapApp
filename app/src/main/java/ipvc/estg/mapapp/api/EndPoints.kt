@@ -17,6 +17,9 @@ interface EndPoints {
               @Field("password") password:String?): Call<OutputPost>
 
 
+    @GET("/myslim/api/getMarker")
+    fun getMarker(): Call<List<marker>>
+
     @GET("/myslim/api/marker/{id}")
     fun getMarkerById(@Path("id_user") id:Int): Call<marker>
 

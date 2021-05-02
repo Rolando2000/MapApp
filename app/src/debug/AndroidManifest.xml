@@ -1,0 +1,8 @@
+<manifest xmlns:android ="http://schemas.android.com/apk/res/android">
+    <application>
+    <activity android:name ="ipvc.estg.mapapp.navMapa"
+    android:label = "@string/title_activity_nav_mapa"
+    android:theme = "@style/Theme.MapApp.NoActionBar">
+    </activity>
+    </application>
+    </manifest>

@@ -42,4 +42,10 @@
         <item>engarrafamento</item>
     </string-array>
     <string name="title_activity_mapa">Map</string>
+    <string name="my_account">Menu</string>
+    <string name="home">Home</string>
+    <string name="Problemas">Problemas</string>
+    <string name="notas">Notas</string>
+    <string name="logout">Logout</string>
+    <string name="Bemvindo">"Ola, "</string>
 </resources>

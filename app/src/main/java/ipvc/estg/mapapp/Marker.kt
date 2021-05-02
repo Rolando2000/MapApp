@@ -55,13 +55,6 @@ class Marker : AppCompatActivity() {
         add.setOnClickListener() {
             markerInicio(idUser)
         }
-
-        val map = findViewById<FloatingActionButton>(R.id.mapa)
-
-        map.setOnClickListener() {
-            val intent = Intent(this, mapa::class.java)
-            startActivity(intent)
-        }
     }
 
     fun markerInicio(marker: String) {

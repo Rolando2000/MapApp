@@ -51,7 +51,7 @@ class retrofitLogin : AppCompatActivity() {
 
                         val c: OutputPost = response.body()!!
                         Toast.makeText(this@retrofitLogin,c.MSG,Toast.LENGTH_SHORT).show()
-                        markerInicio(c.id)
+                        markerInicio(c.id, auxU)
                         finish()
                     }
                 }
@@ -100,7 +100,7 @@ class retrofitLogin : AppCompatActivity() {
                             }
                             val c: OutputPost = response.body()!!
                             Toast.makeText(this@retrofitLogin,c.MSG,Toast.LENGTH_SHORT).show()
-                            markerInicio(c.id)
+                            markerInicio(c.id, user)
                             finish()
 
                         }
@@ -115,9 +115,10 @@ class retrofitLogin : AppCompatActivity() {
         }
     }
 
-    fun markerInicio(marker: String) {
-        val intent = Intent(this, Marker::class.java)
+    fun markerInicio(marker: String, user: String?) {
+        val intent = Intent(this, mapa::class.java)
         intent.putExtra("idUser", marker)
+        intent.putExtra("username", user)
         startActivity(intent)
     }
 
