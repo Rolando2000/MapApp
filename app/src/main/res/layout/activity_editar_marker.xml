@@ -31,7 +31,7 @@
                 android:layout_marginBottom="0dp"
                 android:background="#03A9F4"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/AddProb_actionBar"
+                android:text="@string/Action_barEditarProb"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30dp" />

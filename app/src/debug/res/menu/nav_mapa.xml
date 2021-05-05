@@ -6,8 +6,8 @@
         <menu>
             <item
                 android:id="@+id/home"
-                android:title="@string/home"
-                android:icon="@drawable/ic_baseline_home_24"
+                android:title="@string/mapa"
+                android:icon="@drawable/ic_baseline_map_24"
                 />
             <item
                 android:id="@+id/Problemas"

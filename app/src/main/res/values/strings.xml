@@ -48,4 +48,6 @@
     <string name="notas">Notas</string>
     <string name="logout">Logout</string>
     <string name="Bemvindo">"Ola, "</string>
+    <string name="mapa">Mapa</string>
+    <string name="Action_barEditarProb">Editar Problema</string>
 </resources>

@@ -99,10 +99,14 @@ class retrofitLogin : AppCompatActivity() {
                                 checkbox(aux)
                             }
                             val c: OutputPost = response.body()!!
-                            Toast.makeText(this@retrofitLogin,c.MSG,Toast.LENGTH_SHORT).show()
-                            markerInicio(c.id, user)
-                            finish()
-
+                            if(c.status == true) {
+                                Toast.makeText(this@retrofitLogin,c.MSG,Toast.LENGTH_SHORT).show()
+                                markerInicio(c.id, user)
+                                finish()
+                            }
+                            else {
+                                Toast.makeText(this@retrofitLogin,c.MSG,Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
 

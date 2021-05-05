@@ -14,6 +14,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.navigation.NavigationView
@@ -110,8 +111,15 @@ class mapa : AppCompatActivity(), OnMapReadyCallback {
 
                     aMarker = response.body()!!
                     for(marker in aMarker) {
-                        position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                        mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                        if(marker.idUser == id_user){
+                            position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
+                            mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
+                                (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                        }
+                        else {
+                            position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
+                            mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                        }
                     }
                 }
             }
@@ -137,7 +145,7 @@ class mapa : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(38.7, 38.7)
+        val sydney = LatLng(38.7, -9.7)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }

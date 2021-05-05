@@ -20,7 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class Marker : AppCompatActivity() {
+class Marker : AppCompatActivity(), markerAdapter.OnMarkerClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class Marker : AppCompatActivity() {
                     recyclerView.apply {
                         setHasFixedSize(true)
                         layoutManager = LinearLayoutManager (this@Marker)
-                        adapter = markerAdapter(response.body()!!)
+                        adapter = markerAdapter(response.body()!!, this@Marker)
                     }
                 }
             }
@@ -60,6 +60,13 @@ class Marker : AppCompatActivity() {
     fun markerInicio(marker: String) {
         val intent = Intent(this, AdicionarProblema::class.java)
         intent.putExtra("idUser", marker)
+        startActivity(intent)
+    }
+
+    override fun onMarkerClick(marker: marker, position: Int) {
+        //Toast.makeText(this, nota.titulo, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, EditarMarker::class.java)
+        intent.putExtra("id", marker.id.toInt())
         startActivity(intent)
     }
 
