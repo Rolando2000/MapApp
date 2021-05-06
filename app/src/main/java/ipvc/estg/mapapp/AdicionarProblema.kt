@@ -239,7 +239,7 @@ class AdicionarProblema : AppCompatActivity() {
 
         //Convert bitmap to byte array
         val bos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 0, bos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos)
         val bitMapData = bos.toByteArray()
 
         //write the bytes in file

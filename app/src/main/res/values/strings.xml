@@ -57,4 +57,5 @@
     <string name="tipoProbBuracos">Buracos</string>
     <string name="tipoProbEngarra">Engarrafamento</string>
     <string name="tipoProbAcidente">Acidente</string>
+    <string name="noFiltro">Sem filtros</string>
 </resources>

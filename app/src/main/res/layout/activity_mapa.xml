@@ -162,6 +162,19 @@
             android:layout_marginBottom="100dp"
             android:text="@string/tipoProbEngarra" />
 
+        <Button
+            android:id="@+id/noFiltro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="646dp"
+            android:layout_marginBottom="100dp"
+            android:text="@string/noFiltro" />
+
     </RelativeLayout>
     <include layout="@layout/header_navigation_drawer"></include>
 
