@@ -41,10 +41,7 @@ interface EndPoints {
     @POST("/myslim/api/markerPut/{id}")
     fun updateMarker(@Field("titulo") titulo:String?,
                      @Field("descricao") descricao:String?,
-                     @Field("longitude") longitude:Double?,
-                     @Field("latitude") latitude:Double?,
-                     @Field("imagem") imagem:String?,
-                     @Field("tipoproblema") tipoproblema:String?):Call<Outputmarker>
+                     @Field("tipoProb") tipoProb:String?):Call<EditM>
 
 
 

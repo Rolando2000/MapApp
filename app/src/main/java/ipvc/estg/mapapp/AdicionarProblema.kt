@@ -29,6 +29,7 @@ import ipvc.estg.mapapp.api.ServiceBuilder
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,6 +41,8 @@ class AdicionarProblema : AppCompatActivity() {
     private lateinit var image: ImageView
     private lateinit var title: EditText
     private lateinit var description: EditText
+    private lateinit var latP: EditText
+    private lateinit var longP: EditText
 
     private lateinit var location: LatLng
 
@@ -62,6 +65,9 @@ class AdicionarProblema : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adicionar_problema)
+
+        val idUser = getIntent().getStringExtra("idUser")
+        val id_user: Int = idUser!!.toInt()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -91,6 +97,8 @@ class AdicionarProblema : AppCompatActivity() {
 
         title = findViewById(R.id.titulo)
         description = findViewById(R.id.descricao)
+        latP = findViewById(R.id.latitude)
+        longP = findViewById(R.id.longitude)
 
         image = findViewById(R.id.imagemProb)
 
@@ -110,6 +118,9 @@ class AdicionarProblema : AppCompatActivity() {
                 Toast.makeText(applicationContext, R.string.empty_not_saved, Toast.LENGTH_LONG).show()
             } else {
                 post()
+                val intent = Intent(this, Marker::class.java)
+                intent.putExtra("idUser", id_user)
+                startActivity(intent)
                 finish()
             }
         }
@@ -180,8 +191,8 @@ class AdicionarProblema : AppCompatActivity() {
         val titulo: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), title.text.toString())
         val descicao: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), description.text.toString())
         val type: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), spinner.selectedItem.toString())
-        val latitude: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), lastLocation.latitude.toString())
-        val longitude: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), lastLocation.longitude.toString())
+        val latitude: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), longP.text.toString())
+        val longitude: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), latP.text.toString())
         val tiP: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), ola)
 
         val imgBitmap: Bitmap = findViewById<ImageView>(R.id.imagemProb).drawable.toBitmap()

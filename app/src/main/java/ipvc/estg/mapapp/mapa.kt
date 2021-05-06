@@ -162,7 +162,7 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
                 lastLocation = p0.lastLocation
                 var loc = LatLng(lastLocation.latitude, lastLocation.longitude)
                 //mMap.addMarker(MarkerOptions().position(loc).title("Marker"))
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 15.0f))
+                //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 15.0f))
 
             }
         }
@@ -574,7 +574,7 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
+        setUpMap()
     }
 
     fun setUpMap() {
@@ -593,7 +593,7 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
                     lastLocation = location
                     Toast.makeText(this@mapa, lastLocation.toString(), Toast.LENGTH_SHORT).show()
                     val currentLatLng = LatLng(location.latitude, location.longitude)
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
+                    //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
                 }
             }
         }

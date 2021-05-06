@@ -70,7 +70,7 @@
                 android:textColorHint="@color/black" />
 
             <EditText
-                android:id="@+id/longitude"
+                android:id="@+id/latitude"
                 android:layout_width="378dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -86,7 +86,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/latitude"
+                android:id="@+id/longitude"
                 android:layout_width="376dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
