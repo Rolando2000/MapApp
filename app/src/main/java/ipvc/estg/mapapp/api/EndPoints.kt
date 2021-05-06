@@ -1,5 +1,6 @@
 package ipvc.estg.mapapp.api
 
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -28,13 +29,13 @@ interface EndPoints {
 
     @FormUrlEncoded
     @POST("/myslim/api/postMarker")
-    fun postMarker( @Field("titulo") titulo:String?,
-                    @Field("descricao") descricao:String?,
-                    @Field("longitude") longitude:Double?,
-                    @Field("latitude") latitude:Double?,
-                    @Field("imagem") imagem:String?,
+    fun postMarker(@Field("titulo") titulo:String?,
+                   @Field("descricao") descricao:String?,
+                   @Field("longitude") longitude:Double?,
+                   @Field("latitude") latitude:Double?,
+                   @Field("imagem") imagem: MultipartBody.Part,
                     @Field("tipoProb") tipoProb:String?,
-                    @Field("idUser") idUser: Int?): Call<Outputmarker>
+                   @Field("idUser") idUser: Int?): Call<Outputmarker>
 
     @POST("/myslim/api/markerPut/{id}")
     fun updateMarker(@Field("titulo") titulo:String?,
