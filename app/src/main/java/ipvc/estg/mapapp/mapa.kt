@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -17,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import ipvc.estg.mapapp.api.EndPoints
 import ipvc.estg.mapapp.api.ServiceBuilder
@@ -26,9 +29,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class mapa : AppCompatActivity(), OnMapReadyCallback {
+class   mapa : AppCompatActivity(), OnMapReadyCallback {
 
 
+
+    private lateinit var FiltroDist: ExtendedFloatingActionButton
+    private lateinit var FiltroTipo: ExtendedFloatingActionButton
 
     private lateinit var mMap: GoogleMap
     private lateinit var aMarker: List<marker>
@@ -36,6 +42,80 @@ class mapa : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mapa)
+
+        val quinhentos =findViewById<Button>(R.id.quinhentos)
+        val mil =findViewById<Button>(R.id.mil)
+        val milQuinhentos =findViewById<Button>(R.id.milquinhentos)
+
+        val engarrafamento =findViewById<Button>(R.id.btnEngarrafamento)
+        val obra =findViewById<Button>(R.id.btnObras)
+        val acidente = findViewById<Button>(R.id.btnAcidente)
+        val estradafechada = findViewById<Button>(R.id.btnEstradaFechada)
+        val buraco = findViewById<Button>(R.id.btnBuracos)
+
+        FiltroDist = findViewById(R.id.distFloatBtn)
+        FiltroTipo = findViewById(R.id.fabTipoProb)
+
+        quinhentos.visibility = View.GONE
+        mil.visibility = View.GONE
+        milQuinhentos.visibility = View.GONE
+        engarrafamento.visibility = View.GONE
+        obra.visibility = View.GONE
+        acidente.visibility = View.GONE
+        estradafechada.visibility = View.GONE
+        buraco.visibility = View.GONE
+
+        var btnDist=false
+        var btnTipo=false
+
+        FiltroDist.shrink()
+        FiltroTipo.shrink()
+
+        FiltroTipo.setOnClickListener(){
+
+            if(!btnTipo){
+                engarrafamento.visibility = View.VISIBLE
+                obra.visibility = View.VISIBLE
+                acidente.visibility = View.VISIBLE
+                estradafechada.visibility = View.VISIBLE
+                buraco.visibility = View.VISIBLE
+
+                FiltroTipo.extend()
+                btnTipo=true
+            }
+            else{
+                engarrafamento.visibility = View.GONE
+                obra.visibility = View.GONE
+                acidente.visibility = View.GONE
+                estradafechada.visibility = View.GONE
+                buraco.visibility = View.GONE
+
+                FiltroTipo.shrink()
+                btnTipo=false
+            }
+        }
+
+        FiltroDist.setOnClickListener(){
+
+            if(!btnDist){
+                quinhentos.visibility = View.VISIBLE
+                mil.visibility = View.VISIBLE
+                milQuinhentos.visibility = View.VISIBLE
+
+                FiltroDist.extend()
+                btnDist=true
+            }
+            else{
+                quinhentos.visibility = View.GONE
+                mil.visibility = View.GONE
+                milQuinhentos.visibility = View.GONE
+
+                FiltroDist.shrink()
+                btnDist=false
+            }
+        }
+
+
 
         val request = ServiceBuilder.buildService(EndPoints::class.java)
 

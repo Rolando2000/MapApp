@@ -12,6 +12,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import ipvc.estg.mapapp.api.*
 import ipvc.estg.mapapp.entities.Note
 import retrofit2.Call
@@ -20,6 +21,7 @@ import retrofit2.Response
 
 
 class retrofitLogin : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

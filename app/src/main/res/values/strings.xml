@@ -50,4 +50,11 @@
     <string name="Bemvindo">"Ola, "</string>
     <string name="mapa">Mapa</string>
     <string name="Action_barEditarProb">Editar Problema</string>
+    <string name="extendedFloatButtonDist">Distância</string>
+    <string name="extendedFloatButtonTipoProb">Problemas</string>
+    <string name="tipoProbObras">Obras</string>
+    <string name="tipoProbEstrFechada">EstradaFechada</string>
+    <string name="tipoProbBuracos">Buracos</string>
+    <string name="tipoProbEngarra">Engarrafamento</string>
+    <string name="tipoProbAcidente">Acidente</string>
 </resources>
