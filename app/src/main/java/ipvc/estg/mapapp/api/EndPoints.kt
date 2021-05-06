@@ -1,6 +1,7 @@
 package ipvc.estg.mapapp.api
 
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -27,15 +28,15 @@ interface EndPoints {
     @GET("/myslim/api/markerUser/{idUser}")
     fun getMarkerByIdUser(@Path("idUser") id:Int): Call<List<marker>>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("/myslim/api/postMarker")
-    fun postMarker(@Field("titulo") titulo:String?,
-                   @Field("descricao") descricao:String?,
-                   @Field("longitude") longitude:Double?,
-                   @Field("latitude") latitude:Double?,
-                   @Field("imagem") imagem: MultipartBody.Part,
-                    @Field("tipoProb") tipoProb:String?,
-                   @Field("idUser") idUser: Int?): Call<Outputmarker>
+    fun postMarker(@Part("titulo") titulo: RequestBody,
+                   @Part("descricao") descricao: RequestBody,
+                   @Part("longitude") longitude: RequestBody,
+                   @Part("latitude") latitude: RequestBody,
+                   @Part imagem:MultipartBody.Part,
+                   @Part("tipoProb") tipoProb: RequestBody,
+                   @Part("idUser") idUser: Int?): Call<Outputmarker>
 
     @POST("/myslim/api/markerPut/{id}")
     fun updateMarker(@Field("titulo") titulo:String?,

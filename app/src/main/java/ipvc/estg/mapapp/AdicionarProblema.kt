@@ -13,6 +13,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -36,28 +37,38 @@ import java.io.*
 
 class AdicionarProblema : AppCompatActivity() {
 
-    private lateinit var mMap: GoogleMap
+    private lateinit var image: ImageView
+    private lateinit var title: EditText
+    private lateinit var description: EditText
+
+    private lateinit var location: LatLng
+
+    private val newOcorrActivityRequestCode = 1
+
     private lateinit var lastLocation: Location
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
     private lateinit var locationRequest: LocationRequest
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     private val pickImage = 100
     private var imageUri: Uri? = null
 
+    private lateinit var button: Button
+    private lateinit var buttonBack: Button
+    private lateinit var buttonAdd: Button
+    private lateinit var spinner: Spinner
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adicionar_problema)
-
-        val idUser = getIntent().getStringExtra("idUser")
-        val id_user: Int = idUser!!.toInt()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         val butCorde = findViewById<Button>(R.id.coordenadas)
 
         butCorde.setOnClickListener() {
-            if (ActivityCompat.checkSelfPermission(this,
+            if(ActivityCompat.checkSelfPermission(this,
                             android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                 ActivityCompat.requestPermissions(this,
@@ -65,7 +76,7 @@ class AdicionarProblema : AppCompatActivity() {
             } else {
 
                 fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
-                    if (location != null) {
+                    if(location != null) {
                         lastLocation = location
 
                         val lat = findViewById<TextView>(R.id.latitude)
@@ -78,29 +89,40 @@ class AdicionarProblema : AppCompatActivity() {
             }
         }
 
-        val imageButton = findViewById<Button>(R.id.imagem)
-        imageButton.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                        PackageManager.PERMISSION_DENIED) {
-                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
-                    requestPermissions(permissions, PERMISSION_CODE);
-                }
-                else {
-                    pickImageFromGallery();
-                }
-            }else {
-                pickImageFromGallery()
+        title = findViewById(R.id.titulo)
+        description = findViewById(R.id.descricao)
+
+        image = findViewById(R.id.imagemProb)
+
+        button = findViewById(R.id.imagem)
+
+        button.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK)
+            gallery.type = "image/*"
+            startActivityForResult(gallery, pickImage)
+        }
+        buttonAdd = findViewById(R.id.guardar1)
+        buttonAdd.setOnClickListener {
+            val replyIntent = Intent()
+            if (TextUtils.isEmpty(title.text) && TextUtils.isEmpty(description.text)){
+                setResult(Activity.RESULT_CANCELED, replyIntent)
+                startActivityForResult(intent, newOcorrActivityRequestCode)
+                Toast.makeText(applicationContext, R.string.empty_not_saved, Toast.LENGTH_LONG).show()
+            } else {
+                post()
+                finish()
             }
         }
 
-        val guardar = findViewById<Button>(R.id.guardar1)
-
-        guardar.setOnClickListener() {
-            post()
-            finish()
-
+        spinner = findViewById(R.id.spinner2)
+        ArrayAdapter.createFromResource(this@AdicionarProblema, R.array.tipoProb,android.R.layout.simple_spinner_item).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner.adapter = adapter
         }
+
+
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -113,6 +135,15 @@ class AdicionarProblema : AppCompatActivity() {
             }
         }
         createLocationRequest()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == pickImage) {
+            if (data != null){
+                image.setImageURI(data?.data)
+            }
+        }
     }
 
     private fun createLocationRequest() {
@@ -133,8 +164,6 @@ class AdicionarProblema : AppCompatActivity() {
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null /* Looper */)
     }
 
-
-
     fun post(){
         var ola = "ola"
 
@@ -148,27 +177,20 @@ class AdicionarProblema : AppCompatActivity() {
 
         val request = ServiceBuilder.buildService(EndPoints::class.java)
 
-        val titulo = findViewById<TextView>(R.id.titulo)
-        val tituloText = titulo.text.toString()
+        val titulo: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), title.text.toString())
+        val descicao: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), description.text.toString())
+        val type: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), spinner.selectedItem.toString())
+        val latitude: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), lastLocation.latitude.toString())
+        val longitude: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), lastLocation.longitude.toString())
+        val tiP: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), ola)
 
         val imgBitmap: Bitmap = findViewById<ImageView>(R.id.imagemProb).drawable.toBitmap()
         val imageFile: File = convertBitmapToFile("file", imgBitmap)
-        val imgFileRequest: RequestBody = RequestBody.create(MediaType.parse("image/*"), imageFile)
-        val imagem: MultipartBody.Part = MultipartBody.Part.createFormData("image", imageFile.name, imgFileRequest)
+        val imgFileRequest: RequestBody = RequestBody.create(MediaType.parse("imagem/*"), imageFile)
+        val imagem: MultipartBody.Part = MultipartBody.Part.createFormData("imagem", imageFile.name, imgFileRequest)
 
 
-        val descricao = findViewById<TextView>(R.id.descricao)
-        val descricaoText = descricao.text.toString()
-
-        val longitude = findViewById<TextView>(R.id.longitude)
-        val longitudeText = longitude.text.toString()
-        val longDou = longitudeText.toDouble()
-
-        val latitude = findViewById<TextView>(R.id.latitude)
-        val latitudeText = latitude.text.toString()
-        val latDou = latitudeText.toDouble()
-
-        val call = request.postMarker(tituloText, descricaoText, longDou, latDou, imagem, ola, id_user)
+        val call = request.postMarker(titulo, descicao, latitude, longitude, imagem, tiP, id_user)
 
         call.enqueue(object : Callback<Outputmarker> {
             override fun onResponse(call: Call<Outputmarker>, response: Response<Outputmarker>) {
@@ -201,13 +223,13 @@ class AdicionarProblema : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         fusedLocationClient.removeLocationUpdates(locationCallback)
-        Log.d("**** cm", "onPause - removeLocationUpdates")
+        Log.d("**** CM", "onPause - removeLocationUpdates")
     }
 
     public override fun onResume() {
         super.onResume()
         startLocationUpdates()
-        Log.d("**** cm", "onResume - startLocationUpdates")
+        Log.d("**** CM", "onResume - startLocationUpdates")
     }
 
     private fun convertBitmapToFile(fileName: String, bitmap: Bitmap): File {
@@ -236,50 +258,5 @@ class AdicionarProblema : AppCompatActivity() {
         }
         return file
     }
-
-
-    private fun pickImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
-    }
-
-    companion object{
-        private val IMAGE_PICK_CODE = 1000;
-        private val PERMISSION_CODE = 1001;
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
-        private const val REQUEST_CHECK_SETTINGS = 2
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        when(requestCode) {
-            PERMISSION_CODE -> {
-                if(grantResults.size > 0 && grantResults[0] ==
-                        PackageManager.PERMISSION_GRANTED) {
-                    pickImageFromGallery()
-                } else {
-                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
-
-
-    @SuppressLint("MissingSuperCall")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
-        if(resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            val image = findViewById<ImageView>(R.id.imagemProb)
-
-            image.setImageURI(data?.data)
-        }
-    }
-
-
-
 
 }
