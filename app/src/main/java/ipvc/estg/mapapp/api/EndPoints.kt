@@ -38,8 +38,10 @@ interface EndPoints {
                    @Part("tipoProb") tipoProb: RequestBody,
                    @Part("idUser") idUser: Int?): Call<Outputmarker>
 
+    @FormUrlEncoded
     @POST("/myslim/api/markerPut/{id}")
-    fun updateMarker(@Field("titulo") titulo:String?,
+    fun updateMarker(@Path("id") id:Int,
+                     @Field("titulo") titulo:String?,
                      @Field("descricao") descricao:String?,
                      @Field("tipoProb") tipoProb:String?):Call<EditM>
 

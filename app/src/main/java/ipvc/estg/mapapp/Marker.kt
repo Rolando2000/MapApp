@@ -64,10 +64,17 @@ class Marker : AppCompatActivity(), markerAdapter.OnMarkerClickListener {
     }
 
     override fun onMarkerClick(marker: marker, position: Int) {
+
+        val idUser = getIntent().getStringExtra("idUser")
+        val id_user: Int = idUser!!.toInt()
+
         //Toast.makeText(this, nota.titulo, Toast.LENGTH_SHORT).show()
         val intent = Intent(this, EditarMarker::class.java)
+        intent.putExtra("idUser", id_user)
         intent.putExtra("id", marker.id.toInt())
+
         startActivity(intent)
+        finish()
     }
 
 

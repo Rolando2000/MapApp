@@ -29,6 +29,7 @@ class EditarMarker : AppCompatActivity() {
         setContentView(R.layout.activity_editar_marker)
 
         val idM = getIntent().getIntExtra("id", 0)
+        val id_user = getIntent().getIntExtra("idUser", 0)
 
         val request = ServiceBuilder.buildService(EndPoints::class.java)
 
@@ -77,7 +78,7 @@ class EditarMarker : AppCompatActivity() {
             val descricaoText = descricao.text.toString()
 
 
-            val call = request.updateMarker(tituloText, descricaoText, ola)
+            val call = request.updateMarker(idM, tituloText, descricaoText, ola)
 
             call.enqueue(object : Callback<EditM> {
                 override fun onResponse(call: Call<EditM>, response: Response<EditM>) {
@@ -85,9 +86,7 @@ class EditarMarker : AppCompatActivity() {
 
                         val c: EditM = response.body()!!
                         Toast.makeText(this@EditarMarker,c.MSG, Toast.LENGTH_SHORT).show()
-
-
-
+                        markerInicio(id_user.toString())
                     }
                 }
 
@@ -96,7 +95,16 @@ class EditarMarker : AppCompatActivity() {
                 }
 
             })
+
+
         }
 
+    }
+
+    fun markerInicio(user: String) {
+        val intent = Intent(this, Marker::class.java)
+        intent.putExtra("idUser", user)
+        startActivity(intent)
+        finish()
     }
 }
