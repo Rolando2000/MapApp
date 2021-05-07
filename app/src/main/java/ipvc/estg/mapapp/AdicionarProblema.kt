@@ -117,6 +117,7 @@ class AdicionarProblema : AppCompatActivity() {
                 startActivityForResult(intent, newOcorrActivityRequestCode)
                 Toast.makeText(applicationContext, R.string.empty_not_saved, Toast.LENGTH_LONG).show()
             } else {
+
                 post()
                 val intent = Intent(this, Marker::class.java)
                 intent.putExtra("idUser", id_user)

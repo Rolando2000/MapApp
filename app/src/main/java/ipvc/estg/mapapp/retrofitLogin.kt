@@ -30,8 +30,6 @@ class retrofitLogin : AppCompatActivity() {
         val userText = findViewById<TextView>(R.id.user)
         val passText = findViewById<TextView>(R.id.pass)
 
-        val teste=findViewById<TextView>(R.id.teste)
-
         val sharedPref:SharedPreferences=getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE)
 
@@ -73,8 +71,6 @@ class retrofitLogin : AppCompatActivity() {
 
             val user = userText.text.toString()
             val pass = passText.text.toString()
-
-            teste.text=user
 
             if(user == "") {
                 Toast.makeText(
@@ -143,6 +139,12 @@ class retrofitLogin : AppCompatActivity() {
                 commit()
             }
         }
+    }
+
+    fun notas() {
+        val intent = Intent(this, Note::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

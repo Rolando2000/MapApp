@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">MapApp</string>
-    <string name="empty_not_saved">Nota não foi salva, pois não tinha título</string>
+    <string name="empty_not_saved" translatable="false">Nota não foi salva, pois não tinha título</string>
     <string name="apagar_n">Apagar</string>
     <string name="guardar_n">Guardar</string>
     <string name="titulo_n">Notas:</string>
     <string name="tit_n">Inserir Titulo</string>
     <string name="desc_n">Inserir Descricao</string>
     <string name="apagar_nota">Apagar nota:</string>
-    <string name="mensagem_apagar">Tem a certeza que quer eliminar a nota??</string>
+    <string name="mensagem_apagar">Tem a certeza que quer eliminar a nota?</string>
     <string name="sim">SIM</string>
     <string name="nao">NÃO</string>
     <string name="ab_criarNota_n">Criar uma nova Nota</string>
@@ -46,7 +46,7 @@
     <string name="home">Home</string>
     <string name="Problemas">Problemas</string>
     <string name="notas">Notas</string>
-    <string name="logout">Logout</string>
+    <string name="logout">Terminar Sessão</string>
     <string name="Bemvindo">"Ola, "</string>
     <string name="mapa">Mapa</string>
     <string name="Action_barEditarProb">Editar Problema</string>
@@ -58,4 +58,5 @@
     <string name="tipoProbEngarra">Engarrafamento</string>
     <string name="tipoProbAcidente">Acidente</string>
     <string name="noFiltro">Sem filtros</string>
+    <string name="RemeberLogin">lembrar-se</string>
 </resources>

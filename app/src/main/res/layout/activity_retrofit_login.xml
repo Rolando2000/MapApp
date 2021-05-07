@@ -62,16 +62,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/teste"
-        android:layout_width="145dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="608dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:background="#988D8D"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/user"
@@ -108,7 +98,7 @@
         android:layout_marginTop="408dp"
         android:layout_marginEnd="292dp"
         android:layout_marginRight="292dp"
-        android:text="lembrar-se"
+        android:text="@string/RemeberLogin"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -117,13 +107,13 @@
         android:id="@+id/btn_Notas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="448dp"
-        android:text="@string/btn_lo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="560dp"
         android:background="@drawable/n_btn"
-        app:backgroundTint="#2196F3"/>
+        android:text="@string/notas"
+        app:backgroundTint="#2196F3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

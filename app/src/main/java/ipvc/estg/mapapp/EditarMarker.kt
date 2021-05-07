@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.GoogleMap
+import com.squareup.picasso.Picasso
 import ipvc.estg.mapapp.api.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,6 +38,7 @@ class EditarMarker : AppCompatActivity() {
 
         val titE = findViewById<TextView>(R.id.tituloe)
         val descE = findViewById<TextView>(R.id.descricaoe)
+        val img = findViewById<ImageView>(R.id.imgPr)
 
 
         getM.enqueue(object : Callback<marker> {
@@ -47,6 +49,8 @@ class EditarMarker : AppCompatActivity() {
 
                     titE.text = aux.titulo
                     descE.text = aux.descricao
+                    Picasso.with(this@EditarMarker)
+                        .load("https://mapapp1.000webhostapp.com/myslim/api/uploads/" + aux.imagem + ".png").into(img)
                 }
             }
 
@@ -78,25 +82,41 @@ class EditarMarker : AppCompatActivity() {
             val descricaoText = descricao.text.toString()
 
 
-            val call = request.updateMarker(idM, tituloText, descricaoText, ola)
 
-            call.enqueue(object : Callback<EditM> {
-                override fun onResponse(call: Call<EditM>, response: Response<EditM>) {
-                    if (response.isSuccessful) {
+            if(tituloText == "") {
+                Toast.makeText(
+                        applicationContext,
+                        "Título está vazio",
+                        Toast.LENGTH_SHORT).show()
 
-                        val c: EditM = response.body()!!
-                        Toast.makeText(this@EditarMarker,c.MSG, Toast.LENGTH_SHORT).show()
-                        markerInicio(id_user.toString())
+            }
+            else if(descricaoText == "") {
+                Toast.makeText(
+                        applicationContext,
+                        "Descrição está vazio",
+                        Toast.LENGTH_SHORT).show()
+            }
+            else {
+                val call = request.updateMarker(idM, tituloText, descricaoText, ola)
+
+                call.enqueue(object : Callback<EditM> {
+                    override fun onResponse(call: Call<EditM>, response: Response<EditM>) {
+                        if (response.isSuccessful) {
+
+
+                            val c: EditM = response.body()!!
+                            Toast.makeText(this@EditarMarker,c.MSG, Toast.LENGTH_SHORT).show()
+                            markerInicio(id_user.toString())
+
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<EditM>, t: Throwable) {
-                    Toast.makeText(this@EditarMarker, "${t.message}", Toast.LENGTH_SHORT).show()
-                }
+                    override fun onFailure(call: Call<EditM>, t: Throwable) {
+                        Toast.makeText(this@EditarMarker, "${t.message}", Toast.LENGTH_SHORT).show()
+                    }
 
-            })
-
-
+                })
+            }
         }
 
     }

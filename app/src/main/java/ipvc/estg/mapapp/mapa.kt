@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
@@ -22,12 +23,10 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.CircleOptions
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.squareup.picasso.Picasso
 import ipvc.estg.mapapp.api.EndPoints
 import ipvc.estg.mapapp.api.ServiceBuilder
 import ipvc.estg.mapapp.api.marker
@@ -46,6 +45,8 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var FiltroDist: ExtendedFloatingActionButton
     private lateinit var FiltroTipo: ExtendedFloatingActionButton
+
+    private lateinit var foto: ImageView
 
     private lateinit var mMap: GoogleMap
     private lateinit var aMarker: List<marker>
@@ -91,10 +92,6 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
         FiltroDist.shrink()
         FiltroTipo.shrink()
 
-
-
-
-
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
 
         val imgMenu = findViewById<ImageView>(R.id.imgmenu)
@@ -116,12 +113,10 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
                     startActivity(intent)
                 }
                 R.id.Notas ->{
-
                     val intent = Intent(this, Note::class.java)
                     startActivity(intent)
                 }
                 R.id.logout ->{
-
                     val sharedPref: SharedPreferences =getSharedPreferences(
                         getString(R.string.preference_file_key), Context.MODE_PRIVATE)
 
@@ -133,10 +128,7 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
                     val intent = Intent(this, retrofitLogin::class.java)
                     startActivity(intent)
                     finish()
-
-
                 }
-
             }
             // Close the drawer
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -146,9 +138,6 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
         imgMenu.setOnClickListener{
             drawerLayout.openDrawer(GravityCompat.START)
         }
-
-
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -163,7 +152,6 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
                 var loc = LatLng(lastLocation.latitude, lastLocation.longitude)
                 //mMap.addMarker(MarkerOptions().position(loc).title("Marker"))
                 //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 15.0f))
-
             }
         }
 
@@ -173,6 +161,8 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
         val call = request.getMarker()
         var position: LatLng
 
+        val imgPro = findViewById<ImageView>(R.id.probimg)
+
         call.enqueue(object : Callback<List<marker>> {
             override fun onResponse(call: Call<List<marker>>, response: Response<List<marker>>) {
                 if(response.isSuccessful) {
@@ -181,12 +171,15 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
                     for(marker in aMarker) {
                         if(marker.idUser == id_user){
                             position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
+                            Picasso.with(this@mapa)
+                                .load("https://mapapp1.000webhostapp.com/myslim/api/uploads/" + marker.imagem + ".png").into(imgPro)
                             mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
                                 (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).position(position).title(marker.titulo + " - " + marker.tipoProb))
                         }
                         else {
                             position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                             mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                            //mMap.setOnInfoWindowClickListener(this)
                         }
                     }
                 }
@@ -362,7 +355,6 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
                                     mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
                                 }
                             }
-
                         }
                     }
                 }
