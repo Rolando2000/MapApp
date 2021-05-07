@@ -67,4 +67,8 @@
     <string name="tp">Tipo Problema:</string>
     <string name="im">imagem:</string>
     <string name="de">descricao:</string>
+    <string name="addtit">Titulo está vazio</string>
+    <string name="addDes">Descricao está vazia</string>
+    <string name="addLa">Latitude está vazia</string>
+    <string name="addLon">Longitude está vazio</string>
 </resources>

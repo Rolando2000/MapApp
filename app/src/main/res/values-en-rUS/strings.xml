@@ -13,7 +13,7 @@
     <string name="nao">No</string>
     <string name="ab_criarNota_n">Create a new Note</string>
     <string name="ab_editarNota_n">Edit Note</string>
-    <string name="btn_lo">Enter</string>
+    <string name="btn_lo">Login</string>
     <string name="username">Username:</string>
     <string name="pass">Password:</string>
     <string name="WrongUser">Username don\'t exist</string>

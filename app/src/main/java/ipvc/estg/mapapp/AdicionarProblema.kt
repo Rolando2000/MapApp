@@ -22,10 +22,7 @@ import androidx.core.graphics.drawable.toBitmap
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
-import ipvc.estg.mapapp.api.EndPoints
-import ipvc.estg.mapapp.api.OutputPost
-import ipvc.estg.mapapp.api.Outputmarker
-import ipvc.estg.mapapp.api.ServiceBuilder
+import ipvc.estg.mapapp.api.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -118,11 +115,27 @@ class AdicionarProblema : AppCompatActivity() {
                 Toast.makeText(applicationContext, R.string.empty_not_saved, Toast.LENGTH_LONG).show()
             } else {
 
-                post()
-                val intent = Intent(this, Marker::class.java)
-                intent.putExtra("idUser", id_user)
-                startActivity(intent)
-                finish()
+                if(title.text.toString() == "") {
+                    Toast.makeText(this@AdicionarProblema,getString(R.string.addtit), Toast.LENGTH_SHORT).show()
+                }
+                else if(description.text.toString() == "") {
+                    Toast.makeText(this@AdicionarProblema,getString(R.string.addDes), Toast.LENGTH_SHORT).show()
+
+                }
+                else if(latP.text.toString() == "") {
+                    Toast.makeText(this@AdicionarProblema,getString(R.string.addLa), Toast.LENGTH_SHORT).show()
+
+                }
+                else if(longP.text.toString() == "") {
+                    Toast.makeText(this@AdicionarProblema,getString(R.string.addLon), Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    post()
+                    val intent = Intent(this, Marker::class.java)
+                    intent.putExtra("idUser", idUser)
+                    startActivity(intent)
+                    finish()
+                }
             }
         }
 
