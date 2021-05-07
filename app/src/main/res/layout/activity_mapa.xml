@@ -169,23 +169,11 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="646dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="595dp"
             android:layout_marginBottom="100dp"
             android:text="@string/noFiltro" />
-
-        <ImageView
-            android:id="@+id/probimg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="260dp"
-            android:layout_marginLeft="260dp"
-            android:layout_marginTop="548dp"
-            tools:srcCompat="@tools:sample/avatars" />
 
     </RelativeLayout>
     <include layout="@layout/header_navigation_drawer"></include>

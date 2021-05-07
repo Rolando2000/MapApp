@@ -3,6 +3,7 @@ package ipvc.estg.mapapp
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -10,10 +11,12 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
 import ipvc.estg.mapapp.api.*
 import retrofit2.Call
@@ -117,6 +120,40 @@ class EditarMarker : AppCompatActivity() {
 
                 })
             }
+        }
+
+        val Apagar = findViewById<FloatingActionButton>(R.id.delete)
+        Apagar.setOnClickListener {
+            val AlertaApagar = AlertDialog.Builder(this)
+            AlertaApagar.setTitle(getString(R.string.apagar_markerTit))
+            AlertaApagar.setMessage(getString(R.string.apagar_marker))
+            AlertaApagar.setPositiveButton(getString(R.string.sim)){ dialog: DialogInterface?, which: Int ->
+                val call = request.DeleteMarker(idM)
+
+                call.enqueue(object : Callback<Outputmarker> {
+                    override fun onResponse(call: Call<Outputmarker>, response: Response<Outputmarker>) {
+                        if (response.isSuccessful) {
+
+                            val c: Outputmarker = response.body()!!
+                            Toast.makeText(this@EditarMarker,c.MSG, Toast.LENGTH_SHORT).show()
+                            markerInicio(id_user.toString())
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Outputmarker>, t: Throwable) {
+                        Toast.makeText(this@EditarMarker, "${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+
+                })
+
+                finish()
+            }
+
+            AlertaApagar.setNegativeButton(getString(R.string.nao)){ dialog, id ->
+                dialog.dismiss()
+            }
+            AlertaApagar.show()
+
         }
 
     }

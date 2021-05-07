@@ -1,10 +1,10 @@
 package ipvc.estg.mapapp
 
 import android.content.Context
+import com.google.android.gms.maps.model.Marker
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
@@ -19,14 +19,17 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CircleOptions
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
+import ipvc.estg.mapapp.adapters.markerAdapter
 import ipvc.estg.mapapp.api.EndPoints
 import ipvc.estg.mapapp.api.ServiceBuilder
 import ipvc.estg.mapapp.api.marker
@@ -35,7 +38,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class   mapa : AppCompatActivity(), OnMapReadyCallback {
+class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private lateinit var lastLocation: Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -161,8 +164,6 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
         val call = request.getMarker()
         var position: LatLng
 
-        val imgPro = findViewById<ImageView>(R.id.probimg)
-
         call.enqueue(object : Callback<List<marker>> {
             override fun onResponse(call: Call<List<marker>>, response: Response<List<marker>>) {
                 if(response.isSuccessful) {
@@ -171,15 +172,18 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
                     for(marker in aMarker) {
                         if(marker.idUser == id_user){
                             position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                            Picasso.with(this@mapa)
-                                .load("https://mapapp1.000webhostapp.com/myslim/api/uploads/" + marker.imagem + ".png").into(imgPro)
+
                             mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
                                 (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+
+
+
                         }
                         else {
                             position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                             mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
                             //mMap.setOnInfoWindowClickListener(this)
+                            //CustomInfoWindowForGoogleMap(marker)
                         }
                     }
                 }
@@ -509,6 +513,7 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
 
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                     mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+
                                 }
                             }
                         }
@@ -566,7 +571,11 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        googleMap.setOnInfoWindowClickListener(this)
         setUpMap()
+        //mMap.setOnInfoWindowClickListener { marker: Marker -> onMarkerClick(marker) }
+
+
     }
 
     fun setUpMap() {
@@ -635,4 +644,30 @@ class   mapa : AppCompatActivity(), OnMapReadyCallback {
         // distance in meter
         return results[0]
     }
+
+    fun CustomInfoWindowForGoogleMap(aux: marker) {
+
+        val img = aux.imagem
+        val desc = aux.descricao
+        val tit = aux.titulo
+
+        val intent = Intent(this, custom_info_window::class.java)
+        intent.putExtra("img", img)
+        intent.putExtra("desc", desc)
+        intent.putExtra("tit", tit)
+        startActivity(intent)
+
+
+    }
+
+    override fun onInfoWindowClick(marker: Marker) {
+
+
+        Toast.makeText(
+            this, marker.snippet.toString(),
+            Toast.LENGTH_SHORT
+        ).show()
+
+    }
+
 }

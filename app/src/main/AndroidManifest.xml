@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MapApp">
-        <activity android:name=".EditarMarker"></activity>
+        <activity android:name=".custom_info_window"></activity>
+        <activity android:name=".EditarMarker" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -32,7 +33,7 @@
 
         <activity
             android:name=".mapa"
-            android:label="@string/title_activity_mapa"></activity>
+            android:label="@string/title_activity_mapa" />
         <activity android:name=".AdicionarProblema" />
         <activity android:name=".retrofitLogin">
             <intent-filter>

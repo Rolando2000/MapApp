@@ -45,6 +45,7 @@ interface EndPoints {
                      @Field("descricao") descricao:String?,
                      @Field("tipoProb") tipoProb:String?):Call<EditM>
 
-
+    @POST("/myslim/api/markerDelete/{id}")
+    fun DeleteMarker(@Path("id") id:Int?): Call<Outputmarker>
 
 }

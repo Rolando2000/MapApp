@@ -59,4 +59,6 @@
     <string name="tipoProbAcidente">Acidente</string>
     <string name="noFiltro">Sem filtros</string>
     <string name="RemeberLogin">lembrar-se</string>
+    <string name="apagar_marker">Tem certeza que quer eliminar o reporte?</string>
+    <string name="apagar_markerTit">Apagar Reporte?</string>
 </resources>
