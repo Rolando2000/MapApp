@@ -111,7 +111,7 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
 
                 }
                 R.id.Problemas ->{
-                    val intent = Intent(this, Marker::class.java)
+                    val intent = Intent(this, ipvc.estg.mapapp.Marker::class.java)
                     intent.putExtra("idUser", idUser)
                     startActivity(intent)
                 }
@@ -174,14 +174,14 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                             position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
 
                             mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
 
 
 
                         }
                         else {
                             position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                            mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                            mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                             //mMap.setOnInfoWindowClickListener(this)
                             //CustomInfoWindowForGoogleMap(marker)
                         }
@@ -264,12 +264,12 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                                 if(marker.idUser==id_user){
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                     mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                                 else {
 
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                             }
 
@@ -308,12 +308,12 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                                 if(marker.idUser==id_user){
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                     mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                                 else {
 
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                             }
 
@@ -351,12 +351,12 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                                 if(marker.idUser==id_user){
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                     mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                                 else {
 
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                             }
                         }
@@ -383,12 +383,12 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                             if(marker.idUser==id_user){
                                 position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                 mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                             }
                             else {
 
                                 position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                                mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                             }
                         }
                     }
@@ -414,11 +414,11 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                                 if (marker.idUser == id_user) {
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                     mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 } else {
 
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                             }
                         }
@@ -446,11 +446,11 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                                 if (marker.idUser == id_user) {
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                     mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 } else {
 
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                             }
                         }
@@ -477,11 +477,11 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                                 if (marker.idUser == id_user) {
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                     mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 } else {
 
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                             }
                         }
@@ -508,11 +508,11 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                                 if (marker.idUser == id_user) {
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                     mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 } else {
 
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
 
                                 }
                             }
@@ -540,11 +540,11 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
                                 if (marker.idUser == id_user) {
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
                                     mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
-                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(1f).position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 } else {
 
                                     position = LatLng(marker.latitude.toString().toDouble(), marker.longitude.toString().toDouble())
-                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb))
+                                    mMap.addMarker(MarkerOptions().position(position).title(marker.titulo + " - " + marker.tipoProb).snippet(marker.id.toString()))
                                 }
                             }
                         }
@@ -637,7 +637,6 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
         Log.d("**** CM", "onResume - startLocationUpdates")
     }
 
-
     fun calculateDistance(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Float {
         val results = FloatArray(1)
         Location.distanceBetween(lat1, lng1, lat2, lng2, results)
@@ -645,29 +644,10 @@ class mapa : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClic
         return results[0]
     }
 
-    fun CustomInfoWindowForGoogleMap(aux: marker) {
-
-        val img = aux.imagem
-        val desc = aux.descricao
-        val tit = aux.titulo
-
-        val intent = Intent(this, custom_info_window::class.java)
-        intent.putExtra("img", img)
-        intent.putExtra("desc", desc)
-        intent.putExtra("tit", tit)
-        startActivity(intent)
-
-
-    }
-
     override fun onInfoWindowClick(marker: Marker) {
-
-
-        Toast.makeText(
-            this, marker.snippet.toString(),
-            Toast.LENGTH_SHORT
-        ).show()
-
+        val intent = Intent(this, custom_info_window::class.java)
+        intent.putExtra("id", marker.snippet)
+        startActivity(intent)
     }
 
 }

@@ -115,6 +115,14 @@ class retrofitLogin : AppCompatActivity() {
                 })
             }
         }
+
+        val btn_Notas=findViewById<Button>(R.id.btn_Notas)
+
+        btn_Notas.setOnClickListener() {
+            val intent = Intent(this, ipvc.estg.mapapp.Note::class.java)
+            startActivity(intent)
+        }
+
     }
 
     fun markerInicio(marker: String, user: String?) {

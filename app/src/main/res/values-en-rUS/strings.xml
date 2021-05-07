@@ -50,4 +50,12 @@
     <string name="tipoProbEngarra">Traffic</string>
     <string name="tipoProbAcidente">accident</string>
     <string name="RemeberLogin">Remember me</string>
+    <string name="apagar_marker">Are you sure you want delete the report?</string>
+    <string name="apagar_markerTit">Delete Report?</string>
+    <string name="TitVazioE">Title field is empty</string>
+    <string name="DescVaziaE">Description field is empty</string>
+    <string name="ti">Title:</string>
+    <string name="tp">Problem Type:</string>
+    <string name="im">Image:</string>
+    <string name="de">Description:</string>
 </resources>

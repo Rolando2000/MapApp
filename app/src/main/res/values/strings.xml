@@ -61,4 +61,10 @@
     <string name="RemeberLogin">lembrar-se</string>
     <string name="apagar_marker">Tem certeza que quer eliminar o reporte?</string>
     <string name="apagar_markerTit">Apagar Reporte?</string>
+    <string name="TitVazioE">Título está vazio</string>
+    <string name="DescVaziaE">Descrição está vazio</string>
+    <string name="ti">Titulo</string>
+    <string name="tp">Tipo Problema:</string>
+    <string name="im">imagem:</string>
+    <string name="de">descricao:</string>
 </resources>

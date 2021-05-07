@@ -89,14 +89,14 @@ class EditarMarker : AppCompatActivity() {
             if(tituloText == "") {
                 Toast.makeText(
                         applicationContext,
-                        "Título está vazio",
+                        getString(R.string.TitVazioE),
                         Toast.LENGTH_SHORT).show()
 
             }
             else if(descricaoText == "") {
                 Toast.makeText(
                         applicationContext,
-                        "Descrição está vazio",
+                        getString(R.string.DescVaziaE),
                         Toast.LENGTH_SHORT).show()
             }
             else {
