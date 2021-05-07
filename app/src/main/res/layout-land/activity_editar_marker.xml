@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdicionarProblema"
+    android:background="@drawable/back_n">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-11dp"
+        android:layout_marginRight="-11dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/actionBar"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="-6dp"
+                android:layout_marginRight="-6dp"
+                android:layout_marginBottom="0dp"
+                android:background="#03A9F4"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/Action_barEditarProb"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="-6dp"
+                android:layout_marginRight="-6dp"
+                android:layout_marginBottom="0dp"
+                android:clickable="true"
+                android:src="@drawable/ic_baseline_delete_forever_24" />
+
+            <EditText
+                android:id="@+id/tituloe"
+                android:layout_width="397dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="250dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/tit_n"
+                android:inputType="textAutoComplete"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="18sp" />
+
+
+            <EditText
+                android:id="@+id/descricaoe"
+                android:layout_width="378dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="250dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/desc_n"
+                android:inputType="textMultiLine"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+            <TextView
+                android:id="@+id/textView2e"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="250dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/TipoProb"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <Spinner
+                android:id="@+id/spinner2e"
+                android:layout_width="320dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginBottom="10dp"
+                android:background="#03A9F4"
+                android:entries="@array/tipoProb" />
+
+            <ImageView
+                android:id="@+id/imgPr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <Button
+                android:id="@+id/guardar1e"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="250dp"
+                android:layout_marginLeft="250dp"
+                android:text="@string/guardar_n" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
